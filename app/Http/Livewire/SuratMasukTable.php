@@ -29,7 +29,8 @@ class SuratMasukTable extends TableComponent
     }
 
     public function delete($id){
-        $this->emit('showDelete',$id);
+        // $this->emit('showDelete',$id);
+        return Surat_masuk::where('id',$id)->delete();
 
     }
 

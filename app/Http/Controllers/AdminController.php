@@ -96,7 +96,7 @@ class AdminController extends Controller
             'no_agenda' => $surat->no_agenda,
             'surat_kepada' => $surat->surat_kepada,
             'alamat_penerima' => $surat->alamat_penerima,
-            'tgl_surat' => $surat->tgl_surat,
+            'keluar_tgl' => $surat->keluar_tgl,
             // 'diteruskan_kepada' => $dit_kep,
             'perihal' => $surat->perihal,
         ]);

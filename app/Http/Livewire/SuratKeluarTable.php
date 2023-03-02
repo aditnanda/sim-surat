@@ -28,7 +28,9 @@ class SuratKeluarTable extends TableComponent
     }
 
     public function delete($id){
-        $this->emit('showDelete',$id);
+        // $this->emit('showDelete',$id);
+
+        return Surat_keluar::where('id',$id)->delete();
 
     }
 
