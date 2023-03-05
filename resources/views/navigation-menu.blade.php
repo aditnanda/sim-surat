@@ -15,6 +15,9 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('master_bidang') }}" :active="request()->routeIs('master_bidang')">
+                        {{ __('Master Bidang') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('surat_masuk') }}" :active="request()->routeIs('surat_masuk')">
                         {{ __('Surat Masuk') }}
                     </x-nav-link>
@@ -145,6 +148,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('master_bidang') }}" :active="request()->routeIs('master_bidang')">
+                {{ __('Master Bidang') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('surat_masuk') }}" :active="request()->routeIs('surat_masuk')">
                 {{ __('Surat Masuk') }}

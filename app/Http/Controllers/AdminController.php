@@ -116,4 +116,8 @@ class AdminController extends Controller
         }
         return Excel::download(new SuratKeluarExport($id), 'rekap_surat_keluar.xlsx');
     }
+
+    public function master_bidang(Request $request){
+        return view('master-bidang');
+    }
 }

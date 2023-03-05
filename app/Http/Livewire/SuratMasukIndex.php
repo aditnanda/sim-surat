@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Master_bidang;
 use App\Models\Surat_masuk;
 use Livewire\Component;
 
 class SuratMasukIndex extends Component
 {
     public $isOpen = 0;
-    public $surat_dari, $diterima_tgl, $tgl_surat, $no_agenda,$no_surat,$diteruskan_kepada= 'Sekretariat (Tu/Umum), Sekretariat (PI/Perencanaan), Sekretariat (Keuangan), Bidang YanKes, Bidang KesMas, Bidang P2P, Bidang KB',$perihal;
+    public $surat_dari, $diterima_tgl, $tgl_surat, $no_agenda,$no_surat,$diteruskan_kepada,$perihal;
     public $surat_masuk_id;
 
     protected $listeners = ['showEdit' => 'edit', 'showDelete' => 'delete'];
@@ -21,6 +22,7 @@ class SuratMasukIndex extends Component
     public function closeModal()
     {
         $this->isOpen = false;
+        $this->emit('reload');
     }
 
     public function create()
@@ -73,7 +75,8 @@ class SuratMasukIndex extends Component
         $this->tgl_surat = $surat_masuk->tgl_surat;
         $this->no_agenda = $surat_masuk->no_agenda;
         $this->no_surat = $surat_masuk->no_surat;
-        $this->diteruskan_kepada = $surat_masuk->diteruskan_kepada;
+        // $this->diteruskan_kepada = $surat_masuk->diteruskan_kepada;
+        $this->emit('update_diteruskan_kepada',$surat_masuk->diteruskan_kepada);
         $this->perihal = $surat_masuk->perihal;
 
         $this->openModal();
@@ -82,6 +85,8 @@ class SuratMasukIndex extends Component
     public function render()
     {
         $this->no_agenda = Surat_masuk::count() + 1;
-        return view('livewire.surat-masuk-index');
+        $data['master_bidangs'] = Master_bidang::get()->pluck('nama');
+
+        return view('livewire.surat-masuk-index',$data);
     }
 }

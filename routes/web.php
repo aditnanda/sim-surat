@@ -38,5 +38,7 @@ Route::middleware([
     Route::get('/surat-keluar',[AdminController::class,'surat_keluar'])->name('surat_keluar');
     Route::get('/surat-keluar/generate/{id}',[AdminController::class,'surat_keluar_generate'])->name('surat_keluar.generate');
     Route::get('/surat-keluar/rekap/{id}',[AdminController::class,'surat_keluar_rekap'])->name('surat_keluar.rekap');
+    Route::get('/master-bidang',[AdminController::class,'master_bidang'])->name('master_bidang');
+
 
 });
