@@ -14,6 +14,8 @@ class SuratKeluarTable extends TableComponent
 
     public $header_view = 'surat-header';
 
+    public $jenis = 'surat-keluar';
+
     public function refreshTab(){
 
     }

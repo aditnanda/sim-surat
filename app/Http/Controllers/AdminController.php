@@ -29,10 +29,16 @@ class AdminController extends Controller
         $filename = $surat->no_agenda.'_surat_masuk.docx';
         $templateProcessor = new TemplateProcessor(public_path('master-surat/Surat Masuk DINKES.docx'));
 
-        $diteruskan_kepada = explode(",",$surat->diteruskan_kepada);
+        if ($surat->diteruskan_kepada) {
+            # code...
+            $diteruskan_kepada = explode(",",$surat->diteruskan_kepada);
+        }else{
+            $diteruskan_kepada = [];
+        }
 
         $n = 1;
         $values = [];
+
         foreach ($diteruskan_kepada as $key => $value) {
             # code...
             $values[] = [
@@ -78,7 +84,12 @@ class AdminController extends Controller
         $filename = $surat->no_agenda.'_surat_keluar.docx';
         $templateProcessor = new TemplateProcessor(public_path('master-surat/Surat Keluar DINKES.docx'));
 
-        $dari_bidang = explode(",",$surat->dari_bidang);
+        if ($surat->dari_bidang) {
+            # code...
+            $dari_bidang = explode(",",$surat->dari_bidang);
+        }else{
+            $dari_bidang = [];
+        }
 
         $n = 1;
         $values = [];

@@ -15,6 +15,9 @@ class SuratMasukTable extends TableComponent
 
     public $header_view = 'surat-header';
 
+    public $jenis = 'surat-masuk';
+
+
     public function refreshTab(){
 
     }

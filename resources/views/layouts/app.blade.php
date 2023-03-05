@@ -23,6 +23,7 @@
         <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.0/dist/full.css" rel="stylesheet" type="text/css" />
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="{{ asset('js/app.js') }}" defer></script>
 
         <!-- Styles -->
 
@@ -95,6 +96,7 @@
         @stack('modals')
         @livewireScripts
         @stack('scripts')
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false" data-turbo-eval="false"></script>
 
     </body>
 </html>
