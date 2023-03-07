@@ -5,7 +5,7 @@
 }" wire:ignore>
 
     <div class="autocomplete" style="width: 100%">
-        <textarea id="myInput" type="text" name="myCountry" placeholder="Country"
+        <textarea id="myInput" type="text" name="myCountry" placeholder="pisahkan dengan koma agar dapat diolah sistem"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             rows="3"></textarea>
     </div>

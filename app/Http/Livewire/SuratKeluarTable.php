@@ -16,13 +16,24 @@ class SuratKeluarTable extends TableComponent
 
     public $jenis = 'surat-keluar';
 
+    public $tgl_awal, $tgl_akhir;
+
+    public function mount()
+    {
+        $this->setTableProperties();
+
+        // my custom code
+        $this->tgl_awal = date('Y-m').'-01';
+        $this->tgl_akhir = date("Y-m-t", strtotime(date('Y-m-d')));
+    }
+
     public function refreshTab(){
 
     }
 
     public function query()
     {
-        return Surat_keluar::query();
+        return Surat_keluar::whereBetween('keluar_tgl',[$this->tgl_awal,$this->tgl_akhir]);
     }
 
     public function edit($id){
