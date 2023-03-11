@@ -32,21 +32,8 @@
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <p style="color: black; text-align: justify">
-                                Barakallah Fii Umrik, Selamat ulang tahun yang ke {{ date('Y') - 1998 }} Vir a.k.a Aliyatul
-                                Maghfiroh a.k.a Vircan!. Hari ini adalah hari spesial untukmu dan semoga hari spesial ini menjadi yang terbaik dalam hidupmu.
-                                <br>
-                                Aku berharap tahun ini membawa banyak kebahagiaan.
-                                Semoga Allah memenuhi hidupmu dengan saat-saat bahagia tanpa akhir, kejutan indah yang tak terhitung jumlahnya, dan kesuksesan tanpa batas!. Teruslah menginspirasi orang
-                                lain dengan kebaikanmu, selalu menjadi sosok yang memberikan dukungan dan tetaplah menjadi Vira yang saat ini kukenal.
-                                <br>
-                                Aku bersyukur karena kamu ada dalam hidupku dan aku berharap kita bisa merayakan hari
-                                spesial ini bersama-sama. Sekali lagi aku mengucapkan "Selamat ulang tahun 💥⭐️" dan semoga semua impianmu menjadi
-                                kenyataan, Aamiin.
-                                <br>
-                                Maaf belum bisa memberikan kado yang istimewa. Tapi dengan kado ini dapat bermanfaat dan bisa membuat hidup vira dan orang yang menggunakan sistem ini semakin bahagia dan penuh berkah.
-                            </p>
+                        <div class="modal-body" style="background-color: black">
+                            {!! $description !!}
                         </div>
                         <div class="modal-footer">
                             <p style="color: black">
