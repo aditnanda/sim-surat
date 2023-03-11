@@ -61,6 +61,7 @@
 @push('scripts')
     <script>
         window.livewire.on('show', data => {
+
             S.init();
             show_date_time();
 
@@ -83,8 +84,16 @@
             e_minsold = (e_hrsold - hrsold) * 60;
             minsold = Math.floor((e_hrsold - hrsold) * 60);
             seconds = Math.floor((e_minsold - minsold) * 60);
-            span_dt_dt.innerHTML = daysold + " Hari " + hrsold + " Jam " + minsold + " Menit " + seconds + " Detik";
+
+            tahun = Math.floor(daysold/365);
+            sisatahun = daysold%365;
+            bulan = Math.floor(sisatahun/31);
+            sisabulan = sisatahun%31;
+            span_dt_dt.innerHTML = tahun + " Tahun " + bulan + " Bulan " + hrsold + " Jam " + minsold + " Menit " + seconds + " Detik";
         }
+
+
+
     </script>
     <script>
         var S = {
