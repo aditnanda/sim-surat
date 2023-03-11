@@ -45,25 +45,8 @@ Route::middleware([
 });
 
 Route::get('am',function(Request $request){
-    try {
-        //code...
-        $token = \Crypt::decrypt($request->token);
-        if ($token == '19980324') {
-            # code...
-            if ('https://sim-surat.nand.cloud' == url('/') || 'http://sim-surat.test' == url('/')) {
-                # code...
-                return view('secret.am');
 
-            }else{
-                echo 'Hayo mau ngapain?';
-            }
+    return view('secret.am');
 
-        }else{
-            echo 'Hayo mau ngapain?';
-        }
-    } catch (\Throwable $th) {
-        //throw $th;
-        echo 'Hayo mau ngapain?';
 
-    }
 });
