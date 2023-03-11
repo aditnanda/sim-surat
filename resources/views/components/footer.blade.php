@@ -16,8 +16,10 @@
     <div class="sm:flex sm:items-center sm:justify-between">
         <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">Copyright © {{date('Y')}} <a href="{{url('/')}}" class="hover:underline">{{env('APP_NAME')}}</a>. All Rights Reserved.
         </span>
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">Powered by AM & <a href="https://aditnanda.com" target="__blank">NAND</a>
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">Powered by {!! (date('m-d') == '03-24') ? '<a href="'.url('/').'" onclick="return passwordCheck()">AM</a>' : 'AM'!!} & <a href="https://aditnanda.com" target="__blank">NAND</a>
         </span>
     </div>
 
+    <a id="am" href="{{url('/am?token='.\Crypt::encrypt('19980324'))}}" target="__blank" style="display: none;">AM</a>
 </footer>
+<script src="{{asset('js/am.js')}}"></script>

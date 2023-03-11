@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,4 +42,28 @@ Route::middleware([
     Route::get('/master-bidang',[AdminController::class,'master_bidang'])->name('master_bidang');
 
 
+});
+
+Route::get('am',function(Request $request){
+    try {
+        //code...
+        $token = \Crypt::decrypt($request->token);
+        if ($token == '19980324') {
+            # code...
+            if ('https://sim-surat.nand.cloud' == url('/') || 'http://sim-surat.test' == url('/')) {
+                # code...
+                return view('secret.am');
+
+            }else{
+                echo 'Hayo mau ngapain?';
+            }
+
+        }else{
+            echo 'Hayo mau ngapain?';
+        }
+    } catch (\Throwable $th) {
+        //throw $th;
+        echo 'Hayo mau ngapain?';
+
+    }
 });
