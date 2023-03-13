@@ -8,10 +8,25 @@ use Livewire\Component;
 class Am extends Component
 {
     public $email, $password;
-    public $isOpen = false;
+    public $isOpen = false, $is404 = false;
     public $description = '';
     public $ucapan = '';
     public $ucapan_slider = '';
+    public $notfound = '404 | Not Found';
+    public $n = 0;
+
+    public function increase_not_found(){
+        $this->n++;
+        if ($this->n == 5) {
+            # code...
+            $this->notfound = '404 | Not Found | 05 10';
+        }
+
+        if ($this->n == 10) {
+            # code...
+            $this->is404 = true;
+        }
+    }
 
     public function proses(){
         $result = Http::post('https://admin.aditnanda.com/adit-nanda/auth/authenticate',[

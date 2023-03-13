@@ -1,7 +1,38 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
-    @if (!$isOpen)
-        <div class="row" style="margin: 16px">
+    @if (!$is404)
+        <section>
+            <div class="form-box" id="form-not-found">
+                {{$notfound}}
+            </div>
+        </section>
+    @else
+        @if (!$isOpen)
+            <section>
+                <div class="form-box">
+                    <div class="form-value">
+                        <form action="" method="post" wire:submit.prevent="proses">
+                            <div class="inputbox">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <input type="email" required wire:model="email">
+                                <label for="">Email</label>
+                            </div>
+                            <div class="inputbox">
+                                <ion-icon name="lock-closed-outline"></ion-icon>
+                                <input type="password" required wire:model="password">
+                                <label for="">Password</label>
+                            </div>
+
+                            <button type="submit" class="btn-login">Proses</button>
+
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+            {{-- <div class="row" style="margin: 16px">
             <form action="" method="post" wire:submit.prevent="proses">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -18,49 +49,59 @@
                 <button class="btn btn-primary" type="submit">Proses</button>
 
             </form>
-        </div>
-    @else
-        <div wire:ignore>
-            <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
+        </div> --}}
+        @else
+            <div wire:ignore>
+                <div id="modal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
 
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="myLargeModalLabel" style="color: black"> NAND </h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myLargeModalLabel" style="color: black"> NAND </h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="background-color: black">
+                                {!! $description !!}
+                            </div>
+                            <div class="modal-footer">
+                                <p style="color: black">
+                                    Sidoarjo, 11 Maret 2023
+                                    <br><br>
+                                    Aditya Nanda Utama
+                                </p>
+                            </div>
                         </div>
-                        <div class="modal-body" style="background-color: black">
-                            {!! $description !!}
-                        </div>
-                        <div class="modal-footer">
-                            <p style="color: black">
-                                Sidoarjo, 11 Maret 2023
-                                <br><br>
-                                Aditya Nanda Utama
-                            </p>
-                        </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            <canvas class="canvas" width="1820" height="905"></canvas>
-            <p class="text" style="color: #3062ed;">
-                {{ $ucapan }}
-                <br />
-                <span id="span_dt_dt"></span>
-            </p>
-        </div>
+                <canvas class="canvas" width="1820" height="905"></canvas>
+                <p class="text" style="color: #ffffff;">
+                    {{ $ucapan }}
+                    <br />
+                    <span id="span_dt_dt"></span>
+                </p>
+            </div>
+        @endif
     @endif
+
 
 
 </div>
 @push('scripts')
+<script>
+document.addEventListener("keypress", function(event) {
+    if (event.keyCode == 53) {
+        @this.call('increase_not_found');
+    }
+});
+</script>
     <script>
         window.livewire.on('show', data => {
+            document.title = 'Hi, Vira!';
 
             var ucapan_slider = data;
             var S = {
@@ -235,7 +276,7 @@
                                         if (t !== time) {
                                             time = t;
                                             S.Shape.switchShape(S.ShapeBuilder.letter(
-                                            time));
+                                                time));
                                         }
                                     }, 1000);
                                 }
@@ -406,7 +447,7 @@
 
                 function processCanvas() {
                     var pixels = shapeContext.getImageData(0, 0, shapeCanvas.width, shapeCanvas.height)
-                    .data;
+                        .data;
                     dots = [],
                         pixels,
                         x = 0,
