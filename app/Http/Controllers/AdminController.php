@@ -71,6 +71,10 @@ class AdminController extends Controller
             //throw $th;
             return false;
         }
+        if (count($id) == 0) {
+            # code...
+            return redirect()->back();
+        }
         return Excel::download(new SuratMasukExport($id), 'rekap_surat_masuk.xlsx');
     }
 
@@ -124,6 +128,10 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             return false;
+        }
+        if (count($id) == 0) {
+            # code...
+            return redirect()->back();
         }
         return Excel::download(new SuratKeluarExport($id), 'rekap_surat_keluar.xlsx');
     }

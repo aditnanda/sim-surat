@@ -17,7 +17,7 @@
 </style>
 <footer class="items-center p-4 footer bg-white dark:bg-gray-800 shadow dark:text-white text-base-content">
     <div class="sm:flex sm:items-center sm:justify-between">
-        <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
+        <a href="{{url('/')}}" class="flex items-center mb-4 sm:mb-0">
             <img src="{{asset('logo.png')}}" alt="" srcset="" class="h-8 mr-3">
 
             {{-- <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" /> --}}
