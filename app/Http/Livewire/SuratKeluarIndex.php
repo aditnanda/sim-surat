@@ -135,6 +135,7 @@ class SuratKeluarIndex extends Component
         $this->alamat_penerima = $surat_keluar->alamat_penerima;
         $this->no_agenda = $surat_keluar->no_agenda;
         $this->no_surat = $surat_keluar->no_surat;
+        $this->kode_surat = $surat_keluar->kode_surat;
         // $this->dari_bidang = $surat_keluar->dari_bidang;
         $this->emit('update_dari_bidang',$surat_keluar->dari_bidang);
 
