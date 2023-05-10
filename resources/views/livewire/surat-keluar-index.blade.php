@@ -113,13 +113,45 @@
 
                                                 <div class="mb-4">
                                                     <label for="exampleFormControlInput1"
+                                                        class="block text-gray-700 text-sm font-bold mb-2 dark:text-white">{{ ucwords('kode surat') }}:</label>
+                                                    <select type="text"
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="exampleFormControlInput1"
+                                                        placeholder="Pilih {{ ucwords('kode_surat') }}"
+                                                        wire:model="kode_surat">
+                                                        <option value="">Pilih kode surat</option>
+                                                        @foreach ($master_kode_surat as $item)
+                                                        <option value="{{strtoupper($item->nama)}}">{{strtoupper($item->nama)}} - Kode : {{$item->kode}}</option>
+
+                                                        @endforeach
+                                                    </select>
+                                                    @error('kode_surat')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label for="exampleFormControlInput1"
                                                         class="block text-gray-700 text-sm font-bold mb-2 dark:text-white">{{ ucwords('no surat') }}:</label>
                                                     <input type="text"
                                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                                         id="exampleFormControlInput1"
                                                         placeholder="Masukkan {{ ucwords('no_surat') }}"
-                                                        wire:model="no_surat">
+                                                        wire:model="no_surat" readonly>
                                                     @error('no_surat')
+                                                        <span class="text-red-500">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-4">
+                                                    <label for="exampleFormControlInput1"
+                                                        class="block text-gray-700 text-sm font-bold mb-2 dark:text-white">{{ ucwords('foto') }}:</label>
+                                                    <input type="file"
+                                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                                        id="exampleFormControlInput1"
+                                                        placeholder="Masukkan {{ ucwords('foto') }}"
+                                                        wire:model="foto" accept="image/png, image/gif, image/jpeg">
+                                                    @error('foto')
                                                         <span class="text-red-500">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -142,7 +174,7 @@
                                     <div
                                         class="dark:bg-gray-800 bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                         <span class="flex w-full rounded-md shadow-sm sm:mr-3 sm:w-auto">
-                                            <button onclick="simpan('dari_bidang')" type="button"
+                                            <button onclick="simpan('dari_bidang')" type="button" wire:loading.remove
                                                 class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-blue dark:text-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                                 Simpan
                                             </button>

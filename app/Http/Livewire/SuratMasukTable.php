@@ -81,6 +81,7 @@ class SuratMasukTable extends TableComponent
             Column::make('Tgl Surat')->searchable()->sortable(),
             Column::make('Diteruskan Kepada')->searchable()->sortable(),
             Column::make('Perihal')->searchable()->sortable(),
+            Column::make('Foto')->view('foto-surat'),
         ];
     }
 }

@@ -18,6 +18,9 @@
                     <x-nav-link href="{{ route('master_bidang') }}" :active="request()->routeIs('master_bidang')">
                         {{ __('Master Bidang') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('master_kode_surat') }}" :active="request()->routeIs('master_kode_surat')">
+                        {{ __('Master Kode Surat') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('surat_masuk') }}" :active="request()->routeIs('surat_masuk')">
                         {{ __('Surat Masuk') }}
                     </x-nav-link>
@@ -151,6 +154,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('master_bidang') }}" :active="request()->routeIs('master_bidang')">
                 {{ __('Master Bidang') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('master_kode_surat') }}" :active="request()->routeIs('master_kode_surat')">
+                {{ __('Master Kode Surat') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('surat_masuk') }}" :active="request()->routeIs('surat_masuk')">
                 {{ __('Surat Masuk') }}

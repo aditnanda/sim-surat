@@ -78,6 +78,7 @@ class SuratKeluarTable extends TableComponent
             Column::make('Alamat Penerima')->searchable()->sortable(),
             Column::make('Dari Bidang')->searchable()->sortable(),
             Column::make('Perihal')->searchable()->sortable(),
+            Column::make('Foto')->view('foto-surat'),
         ];
     }
 }

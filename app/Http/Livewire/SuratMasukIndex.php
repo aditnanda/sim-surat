@@ -5,12 +5,16 @@ namespace App\Http\Livewire;
 use App\Models\Master_bidang;
 use App\Models\Surat_masuk;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class SuratMasukIndex extends Component
 {
+    use WithFileUploads;
+
     public $isOpen = 0;
     public $surat_dari, $diterima_tgl, $tgl_surat, $no_agenda,$no_surat,$diteruskan_kepada,$perihal;
     public $surat_masuk_id;
+    public $foto;
 
     protected $listeners = ['showEdit' => 'edit', 'showDelete' => 'delete'];
 
@@ -27,33 +31,83 @@ class SuratMasukIndex extends Component
 
     public function create()
     {
-        $this->reset(['surat_dari','diterima_tgl','tgl_surat','no_agenda','no_surat','diteruskan_kepada','perihal','surat_masuk_id']);
+        $this->reset(['surat_dari','diterima_tgl','tgl_surat','no_agenda','no_surat','diteruskan_kepada','perihal','surat_masuk_id','foto']);
         $this->openModal();
     }
 
     public function store()
     {
+        $validatedData = $this->validate([
+            'surat_dari' => 'required',
+            'diterima_tgl' => 'required',
+            'tgl_surat' => 'required',
+            'no_agenda' => 'required',
+            'no_surat' => 'required',
+            'diteruskan_kepada' => 'required',
+            'perihal' => 'required',
+
+        ]);
+        $photo_path = '';
+        if ($this->foto) {
+            # code...
+            $validatedData = $this->validate([
+                'foto' => 'file|mimes:jpg,png|max:5120|required',
+
+            ]);
+
+            $this->foto->storeAs('public',$this->foto->hashName());
+            $photo_path = ''.$this->foto->hashName();
+        }
+
 
         if ($this->surat_masuk_id) {
             # code...
-            Surat_masuk::where(['id' => $this->surat_masuk_id])->update([
-                'surat_dari' => $this->surat_dari,
-                'diterima_tgl' => $this->diterima_tgl,
-                'tgl_surat' => $this->tgl_surat,
-                'no_surat' => $this->no_surat,
-                'diteruskan_kepada' => $this->diteruskan_kepada,
-                'perihal' => $this->perihal,
-            ]);
+            if ($photo_path) {
+                # code...
+                Surat_masuk::where(['id' => $this->surat_masuk_id])->update([
+                    'surat_dari' => $this->surat_dari,
+                    'diterima_tgl' => $this->diterima_tgl,
+                    'tgl_surat' => $this->tgl_surat,
+                    'no_surat' => $this->no_surat,
+                    'diteruskan_kepada' => $this->diteruskan_kepada,
+                    'perihal' => $this->perihal,
+                    'foto' => $photo_path,
+                ]);
+            }else{
+                Surat_masuk::where(['id' => $this->surat_masuk_id])->update([
+                    'surat_dari' => $this->surat_dari,
+                    'diterima_tgl' => $this->diterima_tgl,
+                    'tgl_surat' => $this->tgl_surat,
+                    'no_surat' => $this->no_surat,
+                    'diteruskan_kepada' => $this->diteruskan_kepada,
+                    'perihal' => $this->perihal,
+                ]);
+            }
+
         }else{
-            Surat_masuk::create([
-                'surat_dari' => $this->surat_dari,
-                'diterima_tgl' => $this->diterima_tgl,
-                'tgl_surat' => $this->tgl_surat,
-                'no_agenda' => $this->no_agenda,
-                'no_surat' => $this->no_surat,
-                'diteruskan_kepada' => $this->diteruskan_kepada,
-                'perihal' => $this->perihal,
-            ]);
+            if ($photo_path) {
+                # code...
+                Surat_masuk::create([
+                    'surat_dari' => $this->surat_dari,
+                    'diterima_tgl' => $this->diterima_tgl,
+                    'tgl_surat' => $this->tgl_surat,
+                    'no_agenda' => $this->no_agenda,
+                    'no_surat' => $this->no_surat,
+                    'diteruskan_kepada' => $this->diteruskan_kepada,
+                    'perihal' => $this->perihal,
+                    'foto' => $photo_path,
+                ]);
+            }else{
+                Surat_masuk::create([
+                    'surat_dari' => $this->surat_dari,
+                    'diterima_tgl' => $this->diterima_tgl,
+                    'tgl_surat' => $this->tgl_surat,
+                    'no_agenda' => $this->no_agenda,
+                    'no_surat' => $this->no_surat,
+                    'diteruskan_kepada' => $this->diteruskan_kepada,
+                    'perihal' => $this->perihal,
+                ]);
+            }
         }
 
 
@@ -63,7 +117,7 @@ class SuratMasukIndex extends Component
 
         $this->closeModal();
         $this->emit('refreshTable');
-        $this->reset(['surat_dari','diterima_tgl','tgl_surat','no_agenda','no_surat','diteruskan_kepada','perihal','surat_masuk_id']);
+        $this->reset(['surat_dari','diterima_tgl','tgl_surat','no_agenda','no_surat','diteruskan_kepada','perihal','surat_masuk_id','foto']);
     }
 
     public function edit($id)

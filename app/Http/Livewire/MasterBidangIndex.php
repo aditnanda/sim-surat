@@ -32,6 +32,11 @@ class MasterBidangIndex extends Component
     public function store()
     {
 
+        $validatedData = $this->validate([
+            'nama' => 'required',
+
+
+        ]);
         if ($this->master_bidang_id) {
             # code...
             Master_bidang::where(['id' => $this->master_bidang_id])->update([

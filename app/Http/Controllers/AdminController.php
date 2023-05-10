@@ -139,4 +139,8 @@ class AdminController extends Controller
     public function master_bidang(Request $request){
         return view('master-bidang');
     }
+
+    public function master_kode_surat(Request $request){
+        return view('master-kode-surat');
+    }
 }

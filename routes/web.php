@@ -40,6 +40,7 @@ Route::middleware([
     Route::get('/surat-keluar/generate/{id}',[AdminController::class,'surat_keluar_generate'])->name('surat_keluar.generate');
     Route::get('/surat-keluar/rekap/{id}',[AdminController::class,'surat_keluar_rekap'])->name('surat_keluar.rekap');
     Route::get('/master-bidang',[AdminController::class,'master_bidang'])->name('master_bidang');
+    Route::get('/master-kode-surat',[AdminController::class,'master_kode_surat'])->name('master_kode_surat');
 
 
 });
