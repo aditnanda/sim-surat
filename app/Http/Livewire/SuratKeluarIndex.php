@@ -71,10 +71,10 @@ class SuratKeluarIndex extends Component
                     'surat_kepada' => $this->surat_kepada,
                     'keluar_tgl' => $this->keluar_tgl,
                     'alamat_penerima' => $this->alamat_penerima,
-                    'no_surat' => $this->no_surat,
+                    // 'no_surat' => $this->no_surat,
                     'dari_bidang' => $this->dari_bidang,
                     'perihal' => $this->perihal,
-                    'kode_surat' => $this->kode_surat,
+                    // 'kode_surat' => $this->kode_surat,
                     'foto' => $photo_path,
                 ]);
             }else{
@@ -82,9 +82,9 @@ class SuratKeluarIndex extends Component
                     'surat_kepada' => $this->surat_kepada,
                     'keluar_tgl' => $this->keluar_tgl,
                     'alamat_penerima' => $this->alamat_penerima,
-                    'no_surat' => $this->no_surat,
+                    // 'no_surat' => $this->no_surat,
                     'dari_bidang' => $this->dari_bidang,
-                    'kode_surat' => $this->kode_surat,
+                    // 'kode_surat' => $this->kode_surat,
                     'perihal' => $this->perihal,
                 ]);
             }
